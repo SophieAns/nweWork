@@ -5,7 +5,7 @@ import Card from '../Components/Card'
 import LoadingIndicator from '../Components/LoadingIndicator'
 import { Link } from 'react-router-dom'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
+// const API_BASE_URL = import.meta.env.VITE_API_URL
 
 
 function Ingredients() {
@@ -17,10 +17,11 @@ function Ingredients() {
     const fetchIngredients = async () => {
       setLoading(true)
       try {
-        const response = await fetch(`${API_BASE_URL}/list.php?i=list`)
-        const data = await response.json()
-        setIngredients(data.ingredients)
-        setLoading(false)
+        const response = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
+        const data = await response.json();
+        console.log(data);
+        setIngredients(data.meals);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching ingredients:', error)
         setError("Error fetching ingredients")

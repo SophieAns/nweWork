@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import LoadingIndicator from '../Components/LoadingIndicator'
 import Card from '../Components/Card'
+import MealCard from '../Components/MealCard'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://www.themealdb.com/api/json/v1/1").replace(/\/$/, "")
 
 function MealsByIngredient() {
     const { ingredient } = useParams()
@@ -12,12 +13,15 @@ function MealsByIngredient() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
 
-    useEffect(() => {
-      const fetchMeals = async () => {
+
+    const fetchMeals = async () => {
         setLoading(true)
         try {
+          console.log(`Fetching meals with ingredient: ${ingredient}`)
+          console.log(`API URL: ${API_BASE_URL}/filter.php?i=${ingredient}`)
           const response = await fetch(`${API_BASE_URL}/filter.php?i=${ingredient}`)
           const data = await response.json()
+          console.log(data);
           setMeals(data.meals)
           setLoading(false)
         } catch (error) {
@@ -27,11 +31,16 @@ function MealsByIngredient() {
         }
       }
 
+    useEffect(() => {
       fetchMeals()
     }, [ingredient])
 
     return (
-      <div>MealsByIngredient</div>
+      <div>
+        {Meals.map(meal => (
+          <MealCard key={meal.idMeal} meal={meal} />
+        ))}
+      </div>
     )
 }
 
