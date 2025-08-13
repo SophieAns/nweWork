@@ -4,7 +4,7 @@ import SearchForm from '../components/SearchForm'
 import Loadingindicator from '../Components/LoadingIndicator'
 import { useState, useEffect } from 'react'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://www.themealdb.com/api/json/v1/1").replace(/\/$/, "")
 
 function Home() {
     const [search, setSearch] = useState("")
@@ -59,9 +59,11 @@ function Home() {
         setLoading(true)
         try {
             const url = `${API_BASE_URL}/random.php`
+            console.log(`Fetching random meals from: ${url}`)
             const Promises = Array.from({ length: 6 }, () => fetch(url).then(response => response.json()))
             const results = await Promise.all(Promises)
             const randomMeals = results.map(result => result.meals[0])
+            console.log(randomMeals);
             setMeals(randomMeals)
             setLoading(false)
         } catch (error) {
@@ -72,7 +74,9 @@ function Home() {
     }
 
       
-
+useEffect(() => {
+    fetchRandomMeals()
+}, [])
 
     return (
         <MainLayout>
@@ -83,7 +87,7 @@ function Home() {
             <h2 className='text-2xl font-bold mb-4'>{heading}</h2>
             {error && <p className='text-center py-8 text-red-500'>{error}</p>}
             {error === 0 && !error && <p className='text-center py-8 text-gray-400'>No meals found.</p>}
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {meals.map(meal => (
                     <MealCard key={meal.idMeal} meal={meal} />
                 ))}

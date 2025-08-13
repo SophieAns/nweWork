@@ -39,11 +39,11 @@ const fetchMealDetails = async () => {
       {error && <p className="text-center py-8 text-red-500">{error}</p>}
       {!loading && !error && (
         <div className="p-4">
-          <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full mb-4" />
+          <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full mb-4 " />
           <div className='flex items-center justify-between pb-4 mb-4'>
-            <h3 className='text-xl'><span className='font-bold'>Category</span>: {meal.strCategory}</h3>
-            <h3 className='text-xl'><span className='font-bold'>Area</span>: {meal.strArea}</h3>
-            <h3 className='text-xl'><span className='font-bold'>Tags</span>: {meal.strTags}</h3>
+            <h3 className='text-xl text-[#6aa8afff] hover:text-white'><span className='font-bold text-[#e1460bff]'>Category:</span> {meal.strCategory}</h3>
+            <h3 className='text-xl text-[#6aa8afff] hover:text-white'><span className='font-bold text-[#e1460bff]'>Area:</span> {meal.strArea}</h3>
+            <h3 className='text-xl text-[#6aa8afff] hover:text-white'><span className='font-bold text-[#e1460bff]'>Tags:</span> {meal.strTags}</h3>
           </div>
           <h2 className="text-2xl font-bold mb-4">{meal.strMeal}</h2>
           <p className="mb-4">{meal.strInstructions}</p>
