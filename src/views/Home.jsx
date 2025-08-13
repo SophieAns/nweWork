@@ -1,7 +1,7 @@
 import MealCard from '../Components/MealCard'
 import MainLayout from '../layouts/MainLayout'
-import SearchForm from '../components/SearchForm'
-import Loadingindicator from '../Components/LoadingIndicator'
+import SearchForm from '../Components/SearchForm'
+// import Loadingindicator from '../Components/LoadingIndicator'
 import { useState, useEffect } from 'react'
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://www.themealdb.com/api/json/v1/1").replace(/\/$/, "")
