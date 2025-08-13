@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import MainLayout from '../layouts/MainLayout'
-import LoadingIndicator from '../Components/LoadingIndicator'
-import Card from '../Components/Card'
+// import MainLayout from '../layouts/MainLayout'
+// import LoadingIndicator from '../Components/LoadingIndicator'
+// import Card from '../Components/Card'
 import MealCard from '../Components/MealCard'
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://www.themealdb.com/api/json/v1/1").replace(/\/$/, "")
