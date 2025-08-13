@@ -39,6 +39,9 @@ function Home() {
                     setHeading(`Search Results for "${query}"`) // Set heading based on search query
                     setMeals(data.meals || []) // Set meals state with fetched data
                     setLoading(false)
+                    if (!data.meals || data.meals.length === 0) {
+                        setError("No meals found.")
+                    }
                     // Process the data as needed
                 })
                 .catch(error => {
