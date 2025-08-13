@@ -40,10 +40,10 @@ const fetchMealDetails = async () => {
       {!loading && !error && (
         <div className="p-4">
           <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full mb-4" />
-          <div className='flex gap-3 justify-between pb-4 mb-4'>
-            <h3 className='text-xl font-bold'>Category: {meal.strCategory}</h3>
-            <h3 className='text-xl font-bold'>Area: {meal.strArea}</h3>
-            <h3 className='text-xl font-bold'>Tags: {meal.strTags}</h3>
+          <div className='flex items-center justify-between pb-4 mb-4'>
+            <h3 className='text-xl'><span className='font-bold'>Category</span>: {meal.strCategory}</h3>
+            <h3 className='text-xl'><span className='font-bold'>Area</span>: {meal.strArea}</h3>
+            <h3 className='text-xl'><span className='font-bold'>Tags</span>: {meal.strTags}</h3>
           </div>
           <h2 className="text-2xl font-bold mb-4">{meal.strMeal}</h2>
           <p className="mb-4">{meal.strInstructions}</p>
@@ -70,8 +70,8 @@ const fetchMealDetails = async () => {
           </ul>
 
           <div className='space-x-4'>
-            <a href={meal.strSource} target="_blank" rel="noopener noreferrer" className='text-white-500 bg-amber-400 px-4 py-2 rounded text-bold hover:bg-blue-500 font-semibold'>Source</a>
-            <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer" className='text-white-500 bg-red-700 px-4 py-2 rounded text-bold hover:bg-blue-500 font-semibold'>Youtube</a>
+            <a href={meal.strSource} target="_blank" rel="noopener noreferrer"><button className='text-white-500 bg-amber-400 px-4 py-2 rounded text-bold hover:bg-blue-500 font-semibold'>Source</button></a>
+            <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer"><button className='text-white-500 bg-red-700 px-4 py-2 rounded text-bold hover:bg-blue-500 font-semibold'>Youtube</button></a>
           </div>
         </div>
       )}

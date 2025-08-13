@@ -36,7 +36,7 @@ function MealsByIngredient() {
     }, [ingredient])
 
     return (
-      <div>
+      <div className="flex flex-wrap justify-center items-center">
         {Meals.map(meal => (
           <MealCard key={meal.idMeal} meal={meal} />
         ))}

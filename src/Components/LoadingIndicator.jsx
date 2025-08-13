@@ -3,7 +3,10 @@ import React from 'react'
 function LoadingIndicator() {
   return (
     <div className="flex justify-center items-center">
-      <div className="loader ease-linear rounded-full border-gray-200 h-12 w-12"></div>
+      <div className=" border-gray-200 h-12 w-12">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="#FF071D" stroke="#FF071D" stroke-width="15" r="15" cx="40" cy="100"><animate attributeName="opacity" calcMode="spline" dur="1.8" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#FF071D" stroke="#FF071D" stroke-width="15" r="15" cx="100" cy="100"><animate attributeName="opacity" calcMode="spline" dur="1.8" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#FF071D" stroke="#FF071D" stroke-width="15" r="15" cx="160" cy="100"><animate attributeName="opacity" calcMode="spline" dur="1.8" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate></circle></svg>
+        <span className="loader-text text-bold">Loading...</span>
+      </div>
     </div>
   )
 }
