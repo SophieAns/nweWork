@@ -1,7 +1,7 @@
 import MealCard from '../Components/MealCard'
 import MainLayout from '../layouts/MainLayout'
 import SearchForm from '../Components/SearchForm'
-// import Loadingindicator from '../Components/LoadingIndicator'
+import LoadingIndicator from '../Components/LoadingIndicator'
 import { useState, useEffect } from 'react'
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://www.themealdb.com/api/json/v1/1").replace(/\/$/, "")
@@ -89,7 +89,13 @@ useEffect(() => {
 
             <h2 className='text-2xl font-bold mb-4'>{heading}</h2>
             {error && <p className='text-center py-8 text-red-500'>{error}</p>}
-            {error === 0 && !error && <p className='text-center py-8 text-gray-400'>No meals found.</p>}
+            {/* {error === 0 && !error && <p className='text-center py-8 text-gray-400'>No meals found.</p>}{loading && <LoadingIndicator />}
+            {!loading && meals.length === 0 && !error && <p className='text-center py-8 text-gray-400'>No Meals found.</p>} */}
+            {loading && 
+                <p className='text-center py-8'>
+                    <LoadingIndicator />
+                </p>}
+            {!loading && meals.length === 0 && !error && <p className='text-center py-8 text-gray-400'>No meals found.</p>}
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {meals.map(meal => (
                     <MealCard key={meal.idMeal} meal={meal} />
