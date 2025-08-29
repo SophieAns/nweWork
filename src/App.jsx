@@ -5,6 +5,8 @@ import MainLayout from './layouts/MainLayout'
 import Ingredients from './views/ingredents'
 import MealsByIngredient from "./views/MealsByIngredient"
 import MealDetail from './views/MealDetail'
+import Login from './Components/Login'
+import Register from './Components/Register'
 
 
 
@@ -45,6 +47,8 @@ function App() {
       <Route path="/ingredients" element={<Ingredients />} />
       <Route path='/ingredients/:ingredient' element={<MealsByIngredient />} />
       <Route path='/meal/:id' element={<MealDetail />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
     </Routes>
   )
 }
