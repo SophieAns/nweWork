@@ -7,7 +7,7 @@ import MealsByIngredient from "./views/MealsByIngredient"
 import MealDetail from './views/MealDetail'
 import Login from './Components/Login'
 import Register from './Components/Register'
-
+import ProtectedRoute from './Components/ProtectedRoute'
 
 
 
@@ -44,9 +44,21 @@ function App() {
   return ( 
     <Routes>
       <Route path="/" element={<Home />} /> 
-      <Route path="/ingredients" element={<Ingredients />} />
-      <Route path='/ingredients/:ingredient' element={<MealsByIngredient />} />
-      <Route path='/meal/:id' element={<MealDetail />} />
+      <Route path="/ingredients" element={
+        <ProtectedRoute>
+          <Ingredients />
+        </ProtectedRoute>
+      } />
+      <Route path='/ingredients/:ingredient' element={
+        <ProtectedRoute>
+          <MealsByIngredient />
+        </ProtectedRoute>
+      } />
+      <Route path='/meal/:id' element={
+        <ProtectedRoute>
+          <MealDetail />
+        </ProtectedRoute>
+      } />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
     </Routes>
